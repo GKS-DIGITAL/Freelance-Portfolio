@@ -1,3 +1,5 @@
+import "./globals.css";
+
 export const metadata = {
   metadataBase: new URL("https://freelance-portfolio-three-gamma.vercel.app"),
 
