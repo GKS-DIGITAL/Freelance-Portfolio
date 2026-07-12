@@ -42,7 +42,7 @@ export const metadata = {
     siteName: "GKS Digital",
     images: [
       {
-        url: "/og-image.png",
+        url: "https://freelance-portfolio-three-gamma.vercel.app/og-image.png",
         width: 1200,
         height: 630,
         alt: "GKS Digital",
@@ -57,7 +57,7 @@ export const metadata = {
     title: "GKS Digital | Modern Websites for Local Businesses",
     description:
       "Modern websites that help local businesses grow.",
-    images: ["/og-image.png"],
+    images: ["https://freelance-portfolio-three-gamma.vercel.app/og-image.png"],
   },
 };
 
