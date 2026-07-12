@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { scroll-behavior: smooth; }
+body { background:#f8fafc; color:#111827; font-family:'DM Sans',sans-serif; overflow-x:hidden; }
+h1,h2,h3 { font-family:'Manrope',sans-serif; letter-spacing:-.045em; }
+::selection { background:#bfdbfe; color:#172554; }
+.grid-noise { background-image: linear-gradient(rgba(37,99,235,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,.055) 1px,transparent 1px); background-size:42px 42px; }
+.eyebrow { @apply mb-4 inline-flex items-center gap-2 rounded-full border border-blue-100 bg-white px-3 py-1.5 text-xs font-bold uppercase tracking-[.16em] text-sky shadow-sm; }
+.section { @apply mx-auto max-w-7xl px-5 sm:px-8 lg:px-10; }
+.card { @apply rounded-3xl border border-slate-200/80 bg-white shadow-[0_10px_35px_rgba(15,23,42,.055)]; }
+.nav-link { @apply text-sm font-semibold text-slate-600 transition hover:text-sky; }

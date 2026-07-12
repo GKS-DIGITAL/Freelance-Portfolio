@@ -1,0 +1,2 @@
+import Reveal from './Reveal';
+export default function SectionTitle({ label, title, text, centered = true }) { return <Reveal className={`mb-12 ${centered ? 'mx-auto max-w-2xl text-center' : 'max-w-xl'}`}><span className="eyebrow">{label}</span><h2 className="text-3xl font-extrabold leading-tight text-ink sm:text-4xl lg:text-5xl">{title}</h2>{text && <p className="mt-5 text-base leading-7 text-slate-600 sm:text-lg">{text}</p>}</Reveal>; }
