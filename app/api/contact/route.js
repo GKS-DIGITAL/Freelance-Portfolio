@@ -7,7 +7,9 @@ import {
   validateContactPayload,
 } from "../../../lib/contact";
 
-const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
+const resend = process.env.RESEND_API_KEY
+  ? new Resend(process.env.RESEND_API_KEY)
+  : null;
 
 function getOwnerEmail() {
   return process.env.OWNER_EMAIL || "guruuu2468@gmail.com";
@@ -15,7 +17,9 @@ function getOwnerEmail() {
 
 async function sendInquiryEmail(payload) {
   if (!resend) {
-    throw new Error("Resend is not configured. Set RESEND_API_KEY in your environment.");
+    throw new Error(
+      "Resend is not configured. Set RESEND_API_KEY in your environment.",
+    );
   }
 
   const result = await resend.emails.send({
@@ -41,7 +45,7 @@ export async function POST(request) {
           message: "Please complete all required fields.",
           errors,
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -53,18 +57,21 @@ export async function POST(request) {
           success: false,
           message: getFriendlyErrorMessage(emailResponse.error),
         },
-        { status: 502 }
+        { status: 502 },
       );
     }
 
-    return NextResponse.json({ success: true, message: "Inquiry sent successfully." });
+    return NextResponse.json({
+      success: true,
+      message: "Inquiry sent successfully.",
+    });
   } catch (error) {
     return NextResponse.json(
       {
         success: false,
         message: getFriendlyErrorMessage(error),
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

@@ -192,7 +192,8 @@ function ContactForm() {
       return;
     }
 
-    const { sanitized, errors: validationErrors } = validateContactPayload(formData);
+    const { sanitized, errors: validationErrors } =
+      validateContactPayload(formData);
 
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
@@ -214,7 +215,9 @@ function ContactForm() {
       const data = await response.json();
 
       if (!response.ok || !data.success) {
-        throw new Error(data.message || "Something went wrong. Please try again.");
+        throw new Error(
+          data.message || "Something went wrong. Please try again.",
+        );
       }
 
       showToast("success", "✅ Inquiry sent successfully. Opening WhatsApp...");
@@ -222,9 +225,13 @@ function ContactForm() {
 
       const whatsappUrl = buildWhatsAppUrl(
         process.env.NEXT_PUBLIC_WHATSAPP || "919372036702",
-        sanitized
+        sanitized,
       );
-      const whatsappWindow = window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+      const whatsappWindow = window.open(
+        whatsappUrl,
+        "_blank",
+        "noopener,noreferrer",
+      );
       if (!whatsappWindow) {
         window.location.href = whatsappUrl;
       }
@@ -235,7 +242,10 @@ function ContactForm() {
       }, 1000);
     } catch (error) {
       setStatus("error");
-      showToast("error", error.message || "❌ Something went wrong. Please try again.");
+      showToast(
+        "error",
+        error.message || "❌ Something went wrong. Please try again.",
+      );
     }
   };
 
@@ -301,14 +311,18 @@ function ContactForm() {
             placeholder="What would you like your website to do?"
             className={`w-full resize-none rounded-xl border px-4 py-3 outline-none transition focus:border-sky focus:ring-4 focus:ring-blue-100 ${errors.message ? "border-rose-300" : "border-slate-200"}`}
           />
-          {errors.message && <p className="mt-2 text-sm text-rose-600">{errors.message}</p>}
+          {errors.message && (
+            <p className="mt-2 text-sm text-rose-600">{errors.message}</p>
+          )}
         </label>
         <button
           type="submit"
           disabled={status === "loading" || status === "success"}
           className="inline-flex items-center justify-center gap-2 rounded-xl bg-sky px-5 py-3.5 text-sm font-bold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-sky/70 sm:col-span-2"
         >
-          {status === "loading" && <Loader2 size={16} className="animate-spin" />}
+          {status === "loading" && (
+            <Loader2 size={16} className="animate-spin" />
+          )}
           {status === "loading"
             ? "Sending..."
             : status === "success"
@@ -496,7 +510,8 @@ export default function Home() {
                 className="max-w-3xl text-4xl font-extrabold leading-[1.07] text-ink sm:text-6xl lg:text-7xl"
               >
                 Helping{" "}
-                <span className="text-sky">local businesses Build Trust</span> & Get More Customers Online.
+                <span className="text-sky">local businesses Build Trust</span> &
+                Get More Customers Online.
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0, y: 18 }}
@@ -504,8 +519,9 @@ export default function Home() {
                 transition={{ delay: 0.15 }}
                 className="mt-6 max-w-xl text-lg leading-8 text-slate-600"
               >
-                We design fast, mobile-friendly websites for restaurants, salons, gyms, real estate businesses, 
-                and other local brands that want to grow
+                We design fast, mobile-friendly websites for restaurants,
+                salons, gyms, real estate businesses, and other local brands
+                that want to grow
               </motion.p>
               <motion.div
                 initial={{ opacity: 0, y: 15 }}
@@ -682,7 +698,7 @@ export default function Home() {
                   "Landing page design",
                   "Mobile-first design",
                   "Contact & WhatsApp setup",
-                  "1 Month support after launch"
+                  "1 Month support after launch",
                 ],
               ],
               [
@@ -695,7 +711,7 @@ export default function Home() {
                   "Custom conversion strategy",
                   "SEO essentials & analytics",
                   "Priority launch support",
-                  "3 Months support after launch"
+                  "3 Months support after launch",
                 ],
               ],
               [
@@ -707,10 +723,10 @@ export default function Home() {
                   "Advanced interactions",
                   "Content & SEO strategy",
                   "Ongoing growth support",
-                  "6 Months support after launch"
+                  "6 Months support after launch",
                 ],
               ],
-            ].map(([n, d, price , fs], i) => (
+            ].map(([n, d, price, fs], i) => (
               <Reveal delay={i * 0.08} key={n}>
                 <div
                   className={`card relative h-full p-7 ${i === 1 ? "border-sky bg-gradient-to-b from-blue-50 to-white shadow-glow" : " "}`}
@@ -907,7 +923,15 @@ export default function Home() {
     </>
   );
 }
-const Input = ({ label, name, type = "text", value, onChange, error, placeholder }) => {
+const Input = ({
+  label,
+  name,
+  type = "text",
+  value,
+  onChange,
+  error,
+  placeholder,
+}) => {
   return (
     <label>
       <span className="mb-1.5 block text-sm font-bold">{label}</span>
